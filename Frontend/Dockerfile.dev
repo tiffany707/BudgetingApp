@@ -1,0 +1,21 @@
+# 1. Use a lightweight Node Alpine image
+FROM node:20-alpine
+
+# 2. Set the working directory inside the container
+WORKDIR /app
+
+# 3. Copy package manifests first to leverage Docker's caching layer
+COPY package*.json ./
+
+# 4. Install all dependencies (including devDependencies needed for building/running Vite)
+RUN npm install
+
+# 5. Copy the rest of your React source code files
+COPY . .
+
+# 6. Vite projects use port 5173 by default (Create React App uses 3000)
+# Change this to 3000 if your template specifically uses port 3000
+EXPOSE 5173
+
+# 7. Start the local development server with a host flag so Docker can expose it
+CMD ["npm", "run", "dev", "--", "--host"]
