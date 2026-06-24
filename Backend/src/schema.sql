@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS transactions;
+DROP TABLE IF EXISTS categories;
+
+CREATE TABLE IF NOT EXISTS category(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS transactions(
+    id SERIAL PRIMARY KEY,
+    date DATE NOT NULL,
+    description VARCHAR(255),
+    amount NUMERIC(10, 2) NOT NULL,
+    category_id INT REFERENCES category(id) ON DELETE SET NULL,
+    raw_data JSONB,
+    createdAt TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
