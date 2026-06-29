@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Upload from './pages/Upload';
 import NotFoundPage from './pages/NotFound';
 import Dashboard from './pages/Dashboard';
+import TransactionFilter from './components/TransactionsFilter';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     element: <Dashboard />
   },
 
+  {
+    path: '/filter',
+    element: <TransactionFilter />
+  },
 
   {
     path: '*',
