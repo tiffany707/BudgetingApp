@@ -19,7 +19,8 @@ vi.mock("../db.js", () => {
         }
     return{
         pool:{
-            connect: vi.fn().mockResolvedValue(mockClient)
+            connect: vi.fn().mockResolvedValue(mockClient),
+            query: vi.fn()
         },
         __mockClient: mockClient
     }   
@@ -27,7 +28,8 @@ vi.mock("../db.js", () => {
 
 const { categorizeTransaction } = await import("../openaiService.js");
 const {default: app} = await import("../app.js");
-const { __mockClient: mockClient } = await import("../db.js");
+const { __mockClient: mockClient, pool } = await import("../db.js");
+
 
 //Good requests
 describe("POST /api/categorizer -good", () => {
@@ -79,6 +81,21 @@ describe("POST /api/categorizer -bad",  () => {
 
     });
 
+});
+
+//test dashboard
+it("returns 200 and dashboard items", async () => {
+    // 1. Mock the structure pg-pool actually returns: { rows: [...] }
+    const mockData = [{ id: 1, amount: 10, description: "Test" }];
+    pool.query.mockResolvedValueOnce({ rows: mockData });
+
+    // 2. Remove .send() for GET requests
+    const res = await request(app).get("/api/dashboard");
+
+    expect(res.status).toBe(200);
+    
+    // 3. Assert against the array that was sent back
+    expect(res.body).toStrictEqual(mockData);
 });
 
 
