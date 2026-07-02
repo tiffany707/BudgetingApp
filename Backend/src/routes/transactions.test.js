@@ -26,7 +26,7 @@ vi.mock("../db.js", () => {
     }   
 });
 
-const { categorizeTransaction } = await import("../openaiService.js");
+const { categorizeTransaction } = await import("../services/openaiService.js");
 const {default: app} = await import("../app.js");
 const { __mockClient: mockClient, pool } = await import("../db.js");
 

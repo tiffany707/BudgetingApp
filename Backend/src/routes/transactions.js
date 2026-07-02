@@ -1,6 +1,6 @@
 import express from "express";
 import {pool} from "../db.js";
-import { categorizeTransaction } from "../openaiService.js";
+import { categorizeTransaction } from "../services/openaiService.js";
 
 
 const router = express.Router();
