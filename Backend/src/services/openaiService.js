@@ -31,6 +31,7 @@ export const categorizeTransaction = async (description, amount) => {
             
         });
         const choice = response.choices?.[0];
+        
         if (!choice?.message?.content) {
             throw new Error('OpenAI returned no content');
         }

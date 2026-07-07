@@ -4,6 +4,7 @@ import { categorizeTransaction } from "../services/openaiService.js";
 
 
 const router = express.Router();
+
 //categorizeTransaction for the uploader
 router.post("/categorizer", async(req, res) =>{
     

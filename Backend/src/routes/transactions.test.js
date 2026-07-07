@@ -11,7 +11,7 @@ vi.mock("../openaiService.js", () =>({
 }))
 
 
-
+//Mock DB
 vi.mock("../db.js", () => {
     const mockClient = {
             query: vi.fn(),
