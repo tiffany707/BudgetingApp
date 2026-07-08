@@ -50,7 +50,7 @@ pipeline{
 
         stage("Compose Docker"){
             steps{
-                sh "Docker compose build"
+                sh "docker compose build"
             }
         }
 
