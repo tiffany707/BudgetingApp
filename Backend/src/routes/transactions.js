@@ -89,7 +89,7 @@ router.post("/categorizerBatch", async (req, res) =>{
             const {description, amount, date} = tx;
 
             if(!description || amount == undefined || amount == null || !date){
-                throw new error((`Invalid transaction: ${JSON.stringify(tx)}`))
+                throw new Error((`Invalid transaction: ${JSON.stringify(tx)}`))
             }
 
             //predict
@@ -129,7 +129,7 @@ router.post("/categorizerBatch", async (req, res) =>{
 
     }
     catch(error){
-        dbClient.query('ROLLBACK');
+        await dbClient.query('ROLLBACK');
         console.error("A categorizing batch error occured,", error);
         res.status(500).json({error: "Failed to process the batch"})
     }
