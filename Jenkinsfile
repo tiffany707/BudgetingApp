@@ -1,8 +1,11 @@
 pipeline{
     agent any
 
+    tools {
+        nodejs 'node20'  // tells Jenkins to use the NodeJS tool named 'node20'
+    }
+
     environment{
-        NODE_VERSION = '20'
         OPENAI_API_KEY=credentials('OPENAI_API_KEY')
     }
 
