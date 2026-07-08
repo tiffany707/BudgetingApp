@@ -3,7 +3,7 @@ pipeline{
 
     environment{
         NODE_VERSION = '20'
-        OPENAI_API_KEY=credentials(OPENAI_API_KEY)
+        OPENAI_API_KEY=credentials('OPENAI_API_KEY')
     }
 
     stages{
