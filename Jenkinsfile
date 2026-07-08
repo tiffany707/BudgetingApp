@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     tools {
-        nodejs 'node20'  // tells Jenkins to use the NodeJS tool named 'node20'
+        nodejs 'node22'  // tells Jenkins to use the NodeJS tool named 'node20'
     }
 
     environment{
@@ -19,7 +19,7 @@ pipeline{
         stage("Install backend"){
             steps{
                 dir('Backend'){
-                    sh 'npm install'
+                    sh 'npm ci'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline{
         stage("Install Frontend"){
             steps{
                 dir('Frontend'){
-                    sh 'npm install'
+                    sh 'npm ci'
                 }
             }
         }
