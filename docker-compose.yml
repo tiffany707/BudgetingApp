@@ -2,12 +2,12 @@
 services:
   backend:
     build:
-      context: ./backend
+      context: ./Backend
       dockerfile: Dockerfile.dev
     ports:
       - "5000:5000"          # Express API runs on port 5000
     volumes:
-      - ./backend:/app
+      - ./Backend:/app
       - /app/node_modules
     env_file:
       - .env
@@ -19,12 +19,12 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ./Frontend
       dockerfile: Dockerfile.dev
     ports:
       - "5173:5173"          # React app runs on port 5173
     volumes:
-      - ./frontend:/app
+      - ./Frontend:/app
       - /app/node_modules
     env_file:
       - .env
