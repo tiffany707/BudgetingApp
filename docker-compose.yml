@@ -51,7 +51,7 @@ services:
       
   jenkins:
     build:
-      context: ./jenkins
+      context: ./Jenkins
       dockerfile: Dockerfile.dev
     ports: 
       - "8080:8080"
