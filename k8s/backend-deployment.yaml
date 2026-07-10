@@ -24,3 +24,7 @@ spec:
                 secretKeyRef:
                   name: openai-secret
                   key: OPENAI_API_KEY
+            - name: REDIS_HOST
+              value: "redis-service"
+            - name: REDIS_PORT
+              value: "6379"
