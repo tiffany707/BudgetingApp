@@ -26,9 +26,13 @@ export default function TransactionFilter() {
   // Load all categories once, on mount
   useEffect(() => {
     fetch('http://localhost:5000/api/categories')
-      .then((res) => res.json())
+      .then((res) => {
+        if(!res.ok) throw new Error ('Failed to load categories')
+        return res.json()})
       .then((data) => setCategories(data))
-      .catch((err) => console.error('Failed to load categories:', err));
+      .catch((err) => {
+        console.error('Failed to load categories:', err)
+        setCategories([]);})
   }, []);
 
   const toggleCategory = (id: number) => {

@@ -29,3 +29,8 @@ spec:
               value: "redis-service"
             - name: REDIS_PORT
               value: "6379"
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: DATABASE_URL
