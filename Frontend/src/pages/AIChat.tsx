@@ -47,25 +47,28 @@ export default function AiChat() {
   }
 
   return (
-    <div className="agent-chat">
+    <div className="flex flex-col items-center justify-center min-h-screen  p-4">
       <div className="messages">
         {displayMessages.map((msg, i) => (
-          <div key={i} className={`message ${msg.role}`}>
-            {msg.content}
+          <div  key={i} className={`message ${msg.role} m-1 p-2`}>
+            { msg.role == "assistant" ? <div><span className="font-bold">Assistant: </span> {msg.content}</div>
+            :  
+            <div> <span className="font-bold text-stone-400"> User:</span> {msg.content} </div>}
           </div>
         ))}
         {loading && <div className="message assistant loading">Thinking…</div>}
       </div>
 
-      <div className="input-row">
+      <div className="input-row gap-2">
         <input
+          className="w-2xl px-4 py-3 bg-stone-50 border border-slate-600/50 rounded-xl  placeholder-slate-400 focus:outline-none focus:border-slate-400 focus:ring-2 focus:ring-slate-400/20 transition-all shadow-sm"
           value={input}
           onChange={e => setInput(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && !loading && sendMessage()}
           placeholder="Ask about your spending…"
           disabled={loading}
         />
-        <button onClick={sendMessage} disabled={loading || !input.trim()}>
+        <button className="ml-2 py-2 px-3 hover:cursor-pointer hover:bg-slate-800 bg-slate-700 text-white rounded-xl transition-colors duration-400" onClick={sendMessage} disabled={loading || !input.trim()}>
           Send
         </button>
       </div>
