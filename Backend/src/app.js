@@ -4,6 +4,7 @@ import { categorizeTransaction } from "./services/openaiService.js";
 import cors from 'cors';
 import transactionRouter from "./routes/transactions.js";
 import categoriesRouter from "./routes/categories.js";
+import agentRouter from "./routes/agent.js"
 
 //DELETE CONSOLE.LOG
 //FIX CORS
@@ -14,9 +15,11 @@ const app = express();
 app.use(cors()); //FIX LATER THIS IS BAD FOR PRODUCTION 
 app.use(express.json());
 
+
 //Routers
 app.use("/api", transactionRouter);
 app.use("/api", categoriesRouter);
+app.use("/api", agentRouter);
 
 
 //test cors

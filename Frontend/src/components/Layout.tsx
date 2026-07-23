@@ -6,6 +6,7 @@ export default function Layout(){
         { to: "/", label: "Dashboard" },
         { to: "/upload", label: "New Entry" },
         { to: "/filter", label: "Filter" },
+        { to: "/aiChat", label: "AI Chat"}
     ];
 
      return (

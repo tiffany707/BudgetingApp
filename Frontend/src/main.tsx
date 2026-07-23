@@ -7,6 +7,7 @@ import NotFoundPage from './pages/NotFound';
 import Dashboard from './pages/Dashboard';
 import TransactionFilter from './components/TransactionsFilter';
 import Layout from './components/Layout';
+import AIChat from './pages/AIChat';
 
 const router = createBrowserRouter([
    {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { index: true, element: <Dashboard /> },
       { path: 'upload', element: <Upload /> },
       { path: 'filter', element: <TransactionFilter /> },
+      { path: 'aiChat', element: <AIChat /> },
     ],
   },  
 ]);
